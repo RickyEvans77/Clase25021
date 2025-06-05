@@ -1,0 +1,19 @@
+function Acercade() {
+    
+    return (
+      <section style={{ padding: "20px", maxWidth: "600px", margin: "auto" }}>
+        <h2>Sobre Nosotros</h2>
+        <p>
+          Bienvenido a "Mi Tienda" online. Nos especializamos en ofrecer
+          productos de alta calidad a precios accesibles. Nuestro objetivo es
+          brindarte una experiencia de compra simple, rápida y segura.
+        </p>
+        <p>
+          Ya sea que estés buscando tecnología, ropa, accesorios o más, en
+          "Mi Tienda" vas a encontrar lo que necesitás.
+        </p>
+      </section>
+    );
+  }
+  
+export default Acercade;
