@@ -1,7 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import "../styles/ProductosDetalle.css";
+import Card from "./Card";
+import { dispararSweetBasico } from "../assets/SweetAlert";
 
 export default function ProductoDetalle({ funcionCarrito }) {
+
     const { id } = useParams();
     const [producto, setProducto] = useState(null);
     const [cantidad, setCantidad] = useState(1);
@@ -31,6 +35,7 @@ export default function ProductoDetalle({ funcionCarrito }) {
 
     function agregarAlCarrito() {
         if (cantidad < 1) return;
+        dispararSweetBasico("Producto agregado", `Agregaste ${cantidad} ${producto.nombre} al carrito`, "success", "Aceptar");
         funcionCarrito({ ...producto, cantidad });
     }
 
