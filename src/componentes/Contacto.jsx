@@ -1,7 +1,7 @@
 function Contacto () {
 
     return(
-        <p>Contacto en desarrollo</p>
+        <p>Ponte en contacto con nosotros en rickynerd.rae@gmail.com</p>
     )
 }
 

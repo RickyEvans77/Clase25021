@@ -24,10 +24,6 @@ export default function ProductosContainer({ funcionCarrito }) {
         }, []);
     }
 
-    function funcionEnProductos(producto) {
-        funcionCarrito(producto)
-    }
-
     if (cargando) {
         return <p>Cargando Productos....</p>;
     } else if (error) {
@@ -38,7 +34,6 @@ export default function ProductosContainer({ funcionCarrito }) {
                 {productos.map((producto) => (
                     <Card
                         producto={producto}
-                        funcionCarrito={funcionEnProductos}
                     />
                 ))}
             </div>

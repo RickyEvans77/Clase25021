@@ -1,6 +1,5 @@
 import Header from "../componentes/Header.jsx"
 import Main from "../componentes/Main.jsx"
-import Footer from "../componentes/Footer.jsx"
 
 function Home() {
 
@@ -8,7 +7,6 @@ function Home() {
         <div>
             <Header />
             <Main />
-            <Footer />
         </div>
     )
 }
