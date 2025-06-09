@@ -1,22 +1,22 @@
 .detalle-container {
     display: flex;
-    gap: 30px;
-    padding: 20px;
-    background-color: #fdf5e6;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    background-color: rgb(238, 7, 7);
     border: 1px solid #ddd;
-    border-radius: 10px;
-    margin: 20px auto;
-    max-width: 800px;
-    align-items: center;
+    border-radius: 8px;
+    width: 200px;
+    text-align: center;
 }
-  
+
 .detalle-imagen {
-    width: 300px;
-    height: auto;
-    border-radius: 10px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
     object-fit: cover;
 }
-  
+
 .detalle-info {
     flex: 1;
     display: flex;
@@ -24,16 +24,15 @@
     gap: 10px;
     color: black;
 }
-  
+
 .detalle-contador {
     display: flex;
     align-items: center;
     gap: 10px;
     color: black;
 }
-  
+
 .detalle-contador span {
     font-size: 18px;
     color: black;
 }
-  
