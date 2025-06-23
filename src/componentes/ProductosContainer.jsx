@@ -33,6 +33,7 @@ export default function ProductosContainer({ funcionCarrito }) {
             <div className="producto-container">
                 {productos.map((producto) => (
                     <Card
+                        key={producto.id}
                         producto={producto}
                     />
                 ))}
