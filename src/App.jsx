@@ -34,11 +34,6 @@ function App() {
       const nuevoCarrito = [...productosCarrito, producto]
       setProductosCarrito(nuevoCarrito)
     }
-    var totalActualizado = 0
-    productosCarrito.map((p => {
-      totalActualizado = totalActualizado + p.precio * p.cantidad
-    }))
-    setTotal(totalActualizado)
   }
 
   function borrarProductoCarrito(id) {

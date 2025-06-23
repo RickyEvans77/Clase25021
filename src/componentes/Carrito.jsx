@@ -22,8 +22,10 @@ if(!usuarioLogeado){
     return (
         <div className="carrito-container">
             {productosCarrito.length > 0 ? productosCarrito.map((producto) => (
-                <CarritoCard producto={producto} 
-                funcionDisparadora={funcionDisparadora}
+                <CarritoCard 
+                    key={producto.id}
+                    producto={producto} 
+                    funcionDisparadora={funcionDisparadora}
                 />
             ))
             : <p>Carrito vacio</p>}
