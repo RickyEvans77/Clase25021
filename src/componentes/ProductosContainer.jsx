@@ -34,7 +34,11 @@ export default function ProductosContainer({ funcionCarrito }) {
             <div className="producto-container">
                 {productos.map((producto) => (
                     <Card
+<<<<<<< HEAD
                         key={producto.id} //sugerencia de ChatGPT para evitar errores de key
+=======
+                        key={producto.id}
+>>>>>>> 3ccf93f231924433bf8a94e6beca0d86739bd69d
                         producto={producto}
                     />
                 ))}

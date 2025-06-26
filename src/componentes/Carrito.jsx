@@ -27,6 +27,7 @@ export default function Carrito() {
     }
 
     return (
+<<<<<<< HEAD
         <>
             <div className="carrito-container">
                 {productosCarrito.length > 0 ? productosCarrito.map((producto) => (
@@ -42,5 +43,18 @@ export default function Carrito() {
                 <button onClick={DisparadorVaciar}>Vaciar Carrito</button>
             </div>
         </>
+=======
+        <div className="carrito-container">
+            {productosCarrito.length > 0 ? productosCarrito.map((producto) => (
+                <CarritoCard 
+                    key={producto.id}
+                    producto={producto} 
+                    funcionDisparadora={funcionDisparadora}
+                />
+            ))
+            : <p>Carrito vacio</p>}
+            {total > 0 ? <span>Total a pagar: $ {total} </span> : <></>}
+        </div>
+>>>>>>> 3ccf93f231924433bf8a94e6beca0d86739bd69d
     )
 }
