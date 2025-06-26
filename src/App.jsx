@@ -13,8 +13,7 @@ import Admin from './componentes/Admin'
 import Login from './componentes/Login'
 
 function App() {
-<<<<<<< HEAD
-=======
+
   const [productosCarrito, setProductosCarrito] = useState([])
   const [usuarioLogeado, setUserLogeado] = useState(false)
   const [adminLogeado, setAdminLogeado] = useState(false)
@@ -51,11 +50,10 @@ function App() {
   function manejarUser() {
     setUserLogeado(!usuarioLogeado)
   }
->>>>>>> 3ccf93f231924433bf8a94e6beca0d86739bd69d
 
   return (
     <Router>
-      <div>
+      <div className='carrito-container'>
         <Nav />
         <Routes>
           <Route path='/' element={<Home />} />
@@ -64,12 +62,10 @@ function App() {
           <Route path='/Carrito' element={<Carrito />} />
           <Route path='/Productos/:id' element={<ProductoDetalle/>} />
           <Route path='/Admin' element={<Admin />} />
-        </Routes>
-        <Footer />
-        <Routes>
           <Route path='/Acercade' element={<Acercade />} />
           <Route path='/Contacto' element={<Contacto />} />
         </Routes>
+        <Footer />
       </div>
     </Router>
   )
