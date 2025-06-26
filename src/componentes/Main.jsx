@@ -1,5 +1,5 @@
-import React from 'react';
 function Main() {
+
     return (
         <main style={{ padding: "20px" }}>
             <h2>Contenido Principal</h2>
@@ -8,4 +8,5 @@ function Main() {
         </main>
     );
 }
+
 export default Main;

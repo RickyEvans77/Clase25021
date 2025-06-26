@@ -10,7 +10,7 @@ function Card({ producto}) {
             <h1>{producto.nombre}</h1>
             <Link to= {"/productos/" + producto.id}><img className="producto-image" src={producto.imagen}></img></Link>
             <p>$ {producto.precio}</p>
-            <Link to= {"/productos/" + producto.id}><button style={{color:"black"}}>Ver detalles del producto</button></Link>
+            <Link to= {"/productos/" + producto.id}><button style={{color:"white"}}>Ver detalles del producto</button></Link>
         </div>
     )
 }

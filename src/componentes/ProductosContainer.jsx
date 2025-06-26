@@ -9,7 +9,8 @@ export default function ProductosContainer({ funcionCarrito }) {
 
     {
         useEffect(() => {
-            fetch("https://6834476e464b499636020d00.mockapi.io/productos")
+            // fetch("https://6834476e464b499636020d00.mockapi.io/productos")
+            fetch ("/productos.json")
                 .then((respuesta) => respuesta.json())
                 .then((datos) => {
                     console.log(datos)
@@ -33,6 +34,7 @@ export default function ProductosContainer({ funcionCarrito }) {
             <div className="producto-container">
                 {productos.map((producto) => (
                     <Card
+                        key={producto.id} //sugerencia de ChatGPT para evitar errores de key
                         producto={producto}
                     />
                 ))}

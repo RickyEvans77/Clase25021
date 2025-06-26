@@ -1,7 +1,7 @@
 .producto-container {
     display: flex;
     flex-wrap: wrap;
-    flex-direction: row;
+    flex-direction: ro;
     justify-content: center;
 }
 

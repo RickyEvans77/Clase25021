@@ -1,10 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import "../styles/ProductosDetalle.css";
 import Card from "./Card";
 import { dispararSweetBasico } from "../assets/SweetAlert";
+import { CarritoContext } from "../contexts/CarritoContext";
 
-export default function ProductoDetalle({ funcionCarrito }) {
+export default function ProductoDetalle({}) {
+
+    const {agregarAlCarrito} = useContext(CarritoContext);
 
     const { id } = useParams();
     const [producto, setProducto] = useState(null);
@@ -15,28 +18,29 @@ export default function ProductoDetalle({ funcionCarrito }) {
     console.log(id)
 
     useEffect(() => {
-                fetch("https://6834476e464b499636020d00.mockapi.io/productos")
-                .then((res)=> res.json())
-                .then((datos)=> {
-                    const productoEncontrado = datos.find((item)=> item.id === id);
-                    if (productoEncontrado) {
-                        setProducto(productoEncontrado);
-                    } else {
-                        setError("Producto no encontrado");
-                    }
-                    setCargando(false);
-                })
-                .catch((err)=> {
-                    console.log("Error:", err);
-                    setError("Hubo un error al obtener el producto");
-                    setCargando(false);
-                });
-            }, [id]);
+        // fetch("https://6834476e464b499636020d00.mockapi.io/productos")
+        fetch("/productos.json")
+            .then((res) => res.json())
+            .then((datos) => {
+                const productoEncontrado = datos.find((item) => item.id === id);
+                if (productoEncontrado) {
+                    setProducto(productoEncontrado);
+                } else {
+                    setError("Producto no encontrado");
+                }
+                setCargando(false);
+            })
+            .catch((err) => {
+                console.log("Error:", err);
+                setError("Hubo un error al obtener el producto");
+                setCargando(false);
+            });
+    }, [id]);
 
-    function agregarAlCarrito() {
+    function funcionCarrito() {
         if (cantidad < 1) return;
         dispararSweetBasico("Producto agregado", `Agregaste ${cantidad} ${producto.nombre} al carrito`, "success", "Aceptar");
-        funcionCarrito({ ...producto, cantidad });
+        agregarAlCarrito({ ...producto, cantidad });
     }
 
     function sumarContador() {
@@ -63,7 +67,7 @@ export default function ProductoDetalle({ funcionCarrito }) {
                     <span>{cantidad}</span>
                     <button onClick={sumarContador}>+</button>
                 </div>
-                <button onClick={agregarAlCarrito}>Agregar al carrito</button>
+                <button onClick={funcionCarrito}>Agregar al carrito</button>
             </div>
         </div>
     )

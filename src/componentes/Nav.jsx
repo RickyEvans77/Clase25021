@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { CarritoContext } from '../contexts/CarritoContext';
 
-function Nav(productosCarrito) {
+function Nav({}) {
+
+    const {productosCarrito} = useContext(CarritoContext)
+
     return (
         <nav style={{
             backgroundColor: "#f1f1f1", color: "red", padding:
@@ -26,7 +30,7 @@ function Nav(productosCarrito) {
                 <li><Link to="/login" style={{
                     color: "red",
                     textDecoration: "none"
-                }}>Login</Link></li>
+                }}>Login/Registrarse</Link></li>
                 <li><Link to="/admin" style={{
                     color: "red",
                     textDecoration: "none"
