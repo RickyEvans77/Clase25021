@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import "../styles/Productos.css"
 import Card from "./Card"
 
-export default function ProductosContainer({ funcionCarrito }) {
+export default function ProductosContainer({ }) {
     const [productos, setProductos] = useState([])
     const [cargando, setCargando] = useState(true);
     const [error, setError] = useState(null);

@@ -1,6 +1,6 @@
 import CarritoCard from "./CarritoCard.jsx"
 import "../styles/Carrito.css"
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { Navigate } from "react-router-dom";
 import { CarritoContext } from "../contexts/CarritoContext.jsx";
 import { useAuthContext } from "../contexts/AuthContext.jsx";
@@ -27,27 +27,23 @@ export default function Carrito() {
     }
 
     return (
-            <>
+        <>
             <div className="carrito-container">
-            {productosCarrito.length > 0 ? productosCarrito.map((producto) => (
-                <CarritoCard producto={producto}
-                    funcionDisparadora={funcionDisparadora} />
-            ))
-                : <p>Carrito vacio</p>}
-        </div><div>
-                {total > 0 ? <span>Total a pagar: $ {total} </span> : <></>}
-            </div><div>
-                <button onClick={DisparadorVaciar}>Vaciar Carrito</button>
-            </div><div className="carrito-container">
                 {productosCarrito.length > 0 ? productosCarrito.map((producto) => (
                     <CarritoCard
                         key={producto.id}
                         producto={producto}
-                        funcionDisparadora={funcionDisparadora} />
+                        funcionDisparadora={funcionDisparadora}
+                    />
                 ))
                     : <p>Carrito vacio</p>}
-                {total > 0 ? <span>Total a pagar: $ {total} </span> : <></>}
             </div>
-            </>
+            <div>
+                {total > 0 ? <span>Total a pagar: $ {total} </span> : null}
+            </div>
+            <div>
+                <button onClick={DisparadorVaciar}>Vaciar Carrito</button>
+            </div>
+        </>
     )
 }

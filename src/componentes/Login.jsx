@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../contexts/AuthContext';
-import { crearUsuario } from '../autenticacion/firebase';
+import { crearUsuario, loginEmailPass } from '../autenticacion/firebase';
 
 function Login() {
 
@@ -28,6 +28,16 @@ function Login() {
 
     const handleSubmit2 = (e) => {
         logout()
+    }
+
+    function iniciarEmail(e){
+        e.preventDefault();
+        loginEmailPass(usuario,password).then((user)=>{
+            login(usuario)
+            dispararSweetBasico("Logeo exitoso","","success","Confirmar")
+        }).catch((error)=>{
+            alert("Error")
+        })
     }
 
     if (usuarioLogeado == "admin") {
@@ -81,7 +91,26 @@ function Login() {
                 </form>
             </div>
             <div>
-            <Link to={"/Acercade"}><button type='submit'>Reg</button></Link>
+            <form onSubmit={iniciarEmail}>
+                <h2>Iniciar sesión con Email y Contraseña</h2>
+                <div>
+                    <label>Email:</label>
+                    <input
+                        type="text"
+                        value={usuario}
+                        onChange={(e) => setUsuario(e.target.value)}
+                    />
+                </div>
+                <div>
+                    <label>Contraseña:</label>
+                    <input
+                        type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+                </div>
+                <button type="submit">Iniciar sesión</button>
+            </form>
             </div>
         </div>
     );
