@@ -1,10 +1,12 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { CarritoContext } from '../contexts/CarritoContext';
+import { useAuthContext } from '../contexts/AuthContext';
 
 function Nav({}) {
 
     const {productosCarrito} = useContext(CarritoContext)
+    const {user, admin} = useAuthContext();
 
     return (
         <nav style={{
@@ -31,10 +33,10 @@ function Nav({}) {
                     color: "red",
                     textDecoration: "none"
                 }}>Login/Registrarse</Link></li>
-                <li><Link to="/admin" style={{
+                {admin ? <li><Link to="/admin" style={{
                     color: "red",
                     textDecoration: "none"
-                }}>Admin</Link></li>
+                }}>Admin</Link></li> : <></>}
             </ul>
         </nav>
     );

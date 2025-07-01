@@ -18,39 +18,44 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 
 export function crearUsuario(email, password) {
-
-    createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-        // Signed up 
-        console.log("Credenciales", userCredential);
-        const user = userCredential.user;
-        console.log(user);
-        // ...
-    })
-        .catch((error) => {
-            console.log(error.code, error.message);
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            // ..
-        });
+    return (
+        new Promise((rech, resu => {
+            createUserWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    // Signed up 
+                    console.log("Credenciales", userCredential);
+                    const user = userCredential.user;
+                    console.log(user);
+                    resu(user)
+                    // ...
+                })
+                .catch((error) => {
+                    console.log(error.code, error.message);
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    rech(error)
+                    // ..
+                });
+        }))
+    )
 }
 
-export function loginEmailPass(email,password){
-    return(
-        new Promise((resu,rech)=>{ 
-    signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential)=> {
-        console.log("Credenciales", userCredential)
-        const user = userCredential.user;
-        console.log(user)
-        resu(user)
-    })
-    .catch((error)=>{
-        console.log(error.code, error.message);
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        rech(error)
-});
+export function loginEmailPass(email, password) {
+    return (
+        new Promise((resu, rech) => {
+            signInWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    console.log("Credenciales", userCredential)
+                    const user = userCredential.user;
+                    console.log(user)
+                    resu(user)
+                })
+                .catch((error) => {
+                    console.log(error.code, error.message);
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    rech(error)
+                });
         })
     )
 }
