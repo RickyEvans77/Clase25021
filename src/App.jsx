@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect } from 'react'
 import './App.css'
 import Home from './layouts/Home'
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
@@ -12,10 +12,20 @@ import ProductoDetalle from './componentes/ProductoDetalle'
 import Admin from './componentes/Admin'
 import Login from './componentes/Login'
 import FormularioProducto from './componentes/FormularioProducto'
+import { useAuthContext } from './contexts/AuthContext'
+import FormularioEdicion from './componentes/FormularioEdicion'
+import { HelmetProvider } from 'react-helmet-async'
 
 function App() {
 
+  const { verificarLog } = useAuthContext();
+
+  useEffect(() => {
+    verificarLog()
+  }, [])
+
   return (
+    <HelmetProvider>
     <Router>
       <div className='carrito-container'>
         <Nav />
@@ -29,10 +39,12 @@ function App() {
           <Route path='/Acercade' element={<Acercade />} />
           <Route path='/Contacto' element={<Contacto />} />
           <Route path='/Admin/agregarProductos' element={<FormularioProducto />} />
+          <Route path='/Admin/editarProducto/:id' element={<FormularioEdicion />} />
         </Routes>
         <Footer />
       </div>
     </Router>
+    </HelmetProvider>
   )
 }
 

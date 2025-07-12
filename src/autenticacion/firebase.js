@@ -19,7 +19,7 @@ const auth = getAuth();
 
 export function crearUsuario(email, password) {
     return (
-        new Promise((rech, resu => {
+        new Promise((rech, resu) => {
             createUserWithEmailAndPassword(auth, email, password)
                 .then((userCredential) => {
                     // Signed up 
@@ -37,7 +37,6 @@ export function crearUsuario(email, password) {
                     // ..
                 });
         }))
-    )
 }
 
 export function loginEmailPass(email, password) {

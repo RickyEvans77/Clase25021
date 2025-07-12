@@ -23,11 +23,11 @@ export function CarritoProvider({ children }) {
             const nuevoCarrito = [...productosCarrito, producto]
             setProductosCarrito(nuevoCarrito)
         }
-        var totalActualizado = 0
+        /*var totalActualizado = 0
         productosCarrito.map((p => {
             totalActualizado = totalActualizado + p.precio * p.cantidad
         }))
-        setTotal(totalActualizado)
+        setTotal(totalActualizado)*/
     }
 
     const vaciarCarrito = () => {

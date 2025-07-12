@@ -1,21 +1,21 @@
 import React, { useState } from 'react';
 import { dispararSweetBasico } from '../assets/SweetAlert';
-import { agregarProducto } from '../assets/request';
-import { data, Navigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
+import { useAuthContext } from '../contexts/AuthContext';
+import { useProductosContext } from '../contexts/ProductosContext';
 
-function FormularioProducto({}) {
-
+function FormularioProducto() {
+    const { agregarProducto } = useProductosContext();
     const { admin } = useAuthContext();
 
     const [producto, setProducto] = useState({
         nombre: '',
-        precio: '',
-        descripcion: '',
         imagen: '',
+        precio: '',
+        descripcion: ''
     });
 
     const validarFormulario = () => {
-
         if (!producto.nombre.trim()) {
             return ('El nombre es obligatorio.' )
         }
@@ -26,11 +26,9 @@ function FormularioProducto({}) {
             return ('La descripción debe tener al menos 10 caracteres.')
         }
         if (!producto.imagen.trim()){
-            return ("La url de la image no debe estar vacia")
+            return ("La url de la imagen no debe estar vacía")
         }
-        else{
-            return true
-        }
+        return true
     };
 
     const handleChange = (e) => {
@@ -41,12 +39,13 @@ function FormularioProducto({}) {
     const handleSubmit2 = (e) => {
         e.preventDefault();
         const validarForm = validarFormulario()
-        if (validarForm == true) {
+        if (validarForm === true) {
             agregarProducto(producto).then((data)=> {
-            setProducto({ nombre: '', imagen: '', precio: '', descripcion: '' }) 
-        }).catch((error)=> {
-            dispararSweetBasico('Hubo un problema al agregar el producto.',error,"error", "cerrar")
-        })
+                setProducto({ nombre: '', imagen: '', precio: '', descripcion: ''})
+                dispararSweetBasico('Producto agregado', '', "success", "cerrar")
+            }).catch((error)=> {
+                dispararSweetBasico('Hubo un problema al agregar el producto.', error, "error", "cerrar")
+            })
         } else {
             dispararSweetBasico("Error en la carga de productos", validarForm, "error", "cerrar")
         }
@@ -104,4 +103,4 @@ function FormularioProducto({}) {
         </form>
     );
 }
-export default FormularioProducto; 
+export default FormularioProducto;

@@ -1,29 +1,28 @@
 import { useEffect, useState } from "react"
 import "../styles/Productos.css"
 import Card from "./Card"
+import { useProductosContext } from "../contexts/ProductosContext";
+import { Helmet } from "react-helmet-async";
 
 export default function ProductosContainer({ }) {
-    const [productos, setProductos] = useState([])
+
+    const { productos, obtenerProductos, filtrarProductos } = useProductosContext();
     const [cargando, setCargando] = useState(true);
     const [error, setError] = useState(null);
+    const [filtro, setFiltro] = useState("")
 
-    {
         useEffect(() => {
-            // fetch("https://6834476e464b499636020d00.mockapi.io/productos")
-            fetch ("/productos.json")
-                .then((respuesta) => respuesta.json())
-                .then((datos) => {
-                    console.log(datos)
-                    setProductos(datos)
-                    setCargando(false);
-                })
-                .catch((error) => {
-                    console.log(error)
-                    setError('Hubo un problema al cargar los productos');
-                    setCargando(false);
-                });
+            obtenerProductos().then((productos) => {
+                setCargando(false);
+            }).catch((error) => {
+                setError("Hubo un error al obtener los productos.");
+                setCargando(false);
+            });
         }, []);
-    }
+
+        useEffect(() => {
+        filtrarProductos(filtro)
+    },[filtro]);   
 
     if (cargando) {
         return <p>Cargando Productos....</p>;
@@ -31,7 +30,21 @@ export default function ProductosContainer({ }) {
         return <p>{error}</p>;
     } else {
         return (
+            <>
+            <div>
+                <input
+                    type="text"
+                    placeholder="Buscar productos..."
+                    className="form-control mb-3"
+                    value={filtro}
+                    onChange={(e) => setFiltro(e.target.value)}
+                />
+            </div>
             <div className="producto-container">
+                <Helmet>
+                    <title>Productos | Mi Tienda</title>
+                    <meta name="description" content="Explora nuestra variedad de productos." />
+                </Helmet>
                 {productos.map((producto) => (
                     <Card
                         key={producto.id}
@@ -39,6 +52,7 @@ export default function ProductosContainer({ }) {
                     />
                 ))}
             </div>
+            </>
         )
     }
 }

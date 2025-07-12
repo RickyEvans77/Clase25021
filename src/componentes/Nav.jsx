@@ -2,11 +2,12 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { CarritoContext } from '../contexts/CarritoContext';
 import { useAuthContext } from '../contexts/AuthContext';
+import { FaShoppingCart } from "react-icons/fa";
 
 function Nav({}) {
 
     const {productosCarrito} = useContext(CarritoContext)
-    const {user, admin} = useAuthContext();
+    const {admin} = useAuthContext();
 
     return (
         <nav style={{
@@ -26,9 +27,8 @@ function Nav({}) {
                     textDecoration: "none"
                 }}>Productos</Link></li>
                 <li><Link to="/carrito" style={{
-                    color: "red",
-                    textDecoration: "none"
-                }}>Carrito<span>{productosCarrito.lenght > 0 ? productosCarrito.lenght : ""}</span></Link></li>
+                    color: "red"
+                }}><FaShoppingCart size={20} style={{ verticalAlign: "middle", }}/><span>{productosCarrito.lenght > 0 ? productosCarrito.lenght : ""}</span></Link></li>
                 <li><Link to="/login" style={{
                     color: "red",
                     textDecoration: "none"
