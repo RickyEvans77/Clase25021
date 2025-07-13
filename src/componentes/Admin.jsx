@@ -1,6 +1,6 @@
 import { Navigate, useNavigate } from "react-router-dom";
 import { useAuthContext } from "../contexts/AuthContext";
-import BotonEstilo from "./BotonCompra";
+import BotonEstilo from "./Boton";
 
 export default function Admin() {
     const { admin, logout } = useAuthContext();

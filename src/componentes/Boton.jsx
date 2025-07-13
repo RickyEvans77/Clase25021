@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const BotonCompra = styled.button`
+const Boton = styled.button`
   background-color:rgb(255, 51, 51);
   color: white;
   padding: 10px 15px;
@@ -16,8 +16,8 @@ const BotonCompra = styled.button`
   }
   `;
 
-function BotonEstilo({text}) {
-    return <BotonCompra>{text}</BotonCompra>;
+function BotonEstilo({text, onClick}) {
+    return <Boton onClick={onClick}>{text}</Boton>;
 };
 
 export default BotonEstilo;

@@ -4,6 +4,7 @@ import { useProductosContext } from "../contexts/ProductosContext";
 import { useAuthContext } from "../contexts/AuthContext";
 import { ToastContainer, toast } from "react-toastify";
 import { dispararSweetBasico } from "../assets/SweetAlert";
+import { useNavigate } from "react-router-dom";
 
 function FormularioEdicion({ }) {
   const { admin } = useAuthContext();
@@ -12,6 +13,7 @@ function FormularioEdicion({ }) {
   const [producto, setProducto] = useState(productoEncontrado);
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   if (!admin) {
     return (
@@ -71,6 +73,9 @@ function FormularioEdicion({ }) {
     if (validarForm == true) {
       editarProducto(producto).then((prod) => {
         toast.success("Producto editado correctamente!");
+        setTimeout(() => {
+          navigate("/admin");
+        }, 2000);
       }).catch((error) => {
         toast.error("Hubo un problema al actualizar el producto. " + error.message);
       })

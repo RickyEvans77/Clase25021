@@ -20,8 +20,7 @@ function NavBoostrap() {
           <Nav className="me-auto">
             <Nav.Link as={Link} to="/">Inicio</Nav.Link>
             <Nav.Link as={Link} to="/productos">Productos</Nav.Link>
-            {admin && <Nav.Link as={Link} to="/admin">Admin</Nav.Link>}
-            {admin && <Nav.Link as={Link} to="/admin/agregarProductos">Agregar productos</Nav.Link>}
+            {admin && <Nav.Link as={Link} to="/admin">Admin</Nav.Link>}            
           </Nav>
           <Nav>
             <Nav.Link as={Link} to="/carrito">

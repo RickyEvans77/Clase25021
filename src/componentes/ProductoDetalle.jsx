@@ -5,7 +5,7 @@ import { dispararSweetBasico } from "../assets/SweetAlert";
 import { CarritoContext } from "../contexts/CarritoContext";
 import { useAuthContext } from "../contexts/AuthContext";
 import { useProductosContext } from "../contexts/ProductosContext";
-import BotonEstilo from "./BotonCompra";
+import BotonEstilo from "./Boton";
 
 export default function ProductoDetalle({}) {
 

@@ -9,8 +9,8 @@ export function ProductosProvider({ children }) {
     function obtenerProductos() {
         return (
             new Promise((resu, rech) => {
-                //fetch('https://6834476e464b499636020d00.mockapi.io/productos')
-                fetch('/productos.json')
+                fetch('https://6834476e464b499636020d00.mockapi.io/productos')
+                //fetch('/productos.json')
                     .then((respuesta) => respuesta.json())
                     .then((datos) => {
                         setProductos(datos)
@@ -28,8 +28,8 @@ export function ProductosProvider({ children }) {
     function obtenerProductoPorId(id) {
         return (
             new Promise((resu, rech) => {
-            //fetch(`https://6834476e464b499636020d00.mockapi.io/productos`)
-            fetch(`/productos.json`)
+            fetch(`https://6834476e464b499636020d00.mockapi.io/productos`)
+            //fetch(`/productos.json`)
                 .then((res) => res.json())
                 .then((datos) => {
                     const productoEncontrado = datos.find((item) => item.id === id);

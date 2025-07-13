@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { Navigate } from "react-router-dom";
 import { CarritoContext } from "../contexts/CarritoContext.jsx";
 import { useAuthContext } from "../contexts/AuthContext.jsx";
+import Boton from "./Boton.jsx";
 
 export default function Carrito() {
 
@@ -42,7 +43,7 @@ export default function Carrito() {
                 {total > 0 ? <span>Total a pagar: $ {total} </span> : null}
             </div>
             <div>
-                <button onClick={DisparadorVaciar}>Vaciar Carrito</button>
+                <Boton text="Vaciar Carrito" onClick={DisparadorVaciar}></Boton>
             </div>
         </>
     )
