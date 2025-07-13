@@ -1,6 +1,5 @@
 import React, { createContext, useState, useContext } from 'react';
 
-// Crear el contexto de de los productos
 const ProductosContext = createContext();
 export function ProductosProvider({ children }) {
     const [productos, setProductos] = useState([]);
@@ -10,8 +9,8 @@ export function ProductosProvider({ children }) {
     function obtenerProductos() {
         return (
             new Promise((resu, rech) => {
-                fetch('https://6834476e464b499636020d00.mockapi.io/productos')
-                //fetch('/productos.json')
+                //fetch('https://6834476e464b499636020d00.mockapi.io/productos')
+                fetch('/productos.json')
                     .then((respuesta) => respuesta.json())
                     .then((datos) => {
                         setProductos(datos)
@@ -26,12 +25,11 @@ export function ProductosProvider({ children }) {
         )
     }
 
-    // Si necesitas obtener un producto por id:
     function obtenerProductoPorId(id) {
         return (
             new Promise((resu, rech) => {
-            fetch(`https://6834476e464b499636020d00.mockapi.io/productos`)
-            //fetch(`/productos.json/${id}`)
+            //fetch(`https://6834476e464b499636020d00.mockapi.io/productos`)
+            fetch(`/productos.json`)
                 .then((res) => res.json())
                 .then((datos) => {
                     const productoEncontrado = datos.find((item) => item.id === id);
@@ -54,8 +52,7 @@ export function ProductosProvider({ children }) {
         return (
             new Promise(async (resu, rech) => {
                 try {
-                    const respuesta = await fetch('https://6834476e464b499636020d00.mockapi.io/productos', {
-                    //const respuesta = await fetch(`/productos.json`, {
+                    const respuesta = await fetch('https://6834476e464b499636020d00.mockapi.io/productos', {                    
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
@@ -68,7 +65,6 @@ export function ProductosProvider({ children }) {
                     }
                     const data = await respuesta.json();
                         console.log('Producto agregado:', data);
-                        // Actualiza el estado local agregando el nuevo producto
                         setProductos(prev => [...prev, data]);
                         setProductosOriginales(prev => [...prev, data]);
                         resu(data)
@@ -85,7 +81,6 @@ export function ProductosProvider({ children }) {
             new Promise(async (resu, rech) => {
                 try {
                     const respuesta = await fetch(`https://6834476e464b499636020d00.mockapi.io/productos/${producto.id}`, {
-                    //const respuesta = await fetch(`/productos.json/${producto.id}`, {
                         method: 'PUT',
                         headers: {
                             'Content-Type': 'application/json',
@@ -112,8 +107,7 @@ export function ProductosProvider({ children }) {
                 new Promise(async (resu, rech) => {
                     try {
                         const respuesta = await fetch(`https://6834476e464b499636020d00.mockapi.io/productos/${id}`, {
-                        //const respuesta = await fetch(`/productos.json/${id}`, {
-                            method: 'DELETE',
+                        method: 'DELETE',
                         });
                         if (!respuesta.ok) throw new Error('Error al eliminar');
                         alert('Producto eliminado correctamente.');
@@ -135,7 +129,7 @@ export function ProductosProvider({ children }) {
         }
 
         const productosFiltrados = productosOriginales.filter((producto) =>
-            producto.name.toLowerCase().includes(filtro.toLowerCase())
+            producto.nombre.toLowerCase().includes(filtro.toLowerCase())
         );
         setProductos(productosFiltrados)
     }

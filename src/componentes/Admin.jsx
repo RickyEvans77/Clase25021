@@ -1,5 +1,6 @@
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { useAuthContext } from "../contexts/AuthContext";
+import BotonEstilo from "./BotonCompra";
 
 export default function Admin() {
     const { admin, logout } = useAuthContext();
@@ -22,13 +23,13 @@ export default function Admin() {
     return (
         <>
             <div>
-                <p>Componente Administrador</p>
+                <h3>Componente Administrador</h3>
             </div>
             <div>
-                <button onClick={handleAgregarProducto}>Agregar producto</button>
+                <BotonEstilo text= "Agregar producto" onClick={handleAgregarProducto}></BotonEstilo>
             </div>
             <div>
-                <button type="button" onClick={handleCerrarSesion}>Cerrar sesión</button>
+                <BotonEstilo text= "Cerrar sesión" onClick={handleCerrarSesion}></BotonEstilo>
             </div>
         </>
     );

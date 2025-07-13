@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import './App.css'
 import Home from './layouts/Home'
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Nav from './componentes/Nav'
 import Footer from './componentes/Footer'
 import ProductosContainer from './componentes/ProductosContainer'
@@ -14,7 +14,7 @@ import Login from './componentes/Login'
 import FormularioProducto from './componentes/FormularioProducto'
 import { useAuthContext } from './contexts/AuthContext'
 import FormularioEdicion from './componentes/FormularioEdicion'
-import { HelmetProvider } from 'react-helmet-async'
+import NavBoostrap from './componentes/NavBoostrap'
 
 function App() {
 
@@ -24,11 +24,10 @@ function App() {
     verificarLog()
   }, [])
 
-  return (
-    <HelmetProvider>
+  return (   
     <Router>
-      <div className='carrito-container'>
-        <Nav />
+      <div>
+        <NavBoostrap />
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/Login' element={<Login />} />
@@ -44,7 +43,6 @@ function App() {
         <Footer />
       </div>
     </Router>
-    </HelmetProvider>
   )
 }
 

@@ -7,8 +7,9 @@ function Footer() {
             backgroundColor: "#f1f1f1", padding: "10px", color: "red"
         }}>
             <ul style={{
-                listStyle: "none", display: "flex", justifyContent: "space-around", margin: 0, alignItems: "center"
-                }}>
+                listStyle: "none", display: "flex",
+                justifyContent: "space-around", margin: 0
+            }}>
                 <li><p>&copy; 2025 - Mi Tienda </p></li>
                 <li><Link to="/acercade" style={{
                     color: "red",

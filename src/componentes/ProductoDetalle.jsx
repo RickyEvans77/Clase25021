@@ -22,8 +22,6 @@ export default function ProductoDetalle({}) {
     const [cargando, setCargando] = useState(true);
     const [error, setError] = useState(null);
 
-    console.log(id)
-
     useEffect(() => {
         obtenerProductoPorId(id).then(() => {
             setCargando(false);
@@ -40,8 +38,10 @@ export default function ProductoDetalle({}) {
 
     function funcionCarrito() {
         if (cantidad < 1) return;
-        dispararSweetBasico("Producto agregado", `Agregaste ${cantidad} ${producto.nombre} al carrito`, "success", "Aceptar");
+
         agregarAlCarrito({ ...productoEncontrado, cantidad });
+        dispararSweetBasico("Producto agregado", `Agregaste ${cantidad} ${productoEncontrado.nombre} al carrito`, "success", "Aceptar");
+        
     }
 
     function dispararEliminar(){
