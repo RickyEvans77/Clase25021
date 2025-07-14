@@ -5,6 +5,7 @@ import { useAuthContext } from "../contexts/AuthContext";
 import { ToastContainer, toast } from "react-toastify";
 import { dispararSweetBasico } from "../assets/SweetAlert";
 import { useNavigate } from "react-router-dom";
+import BotonEstilo from "./Boton";
 
 function FormularioEdicion({ }) {
   const { admin } = useAuthContext();
@@ -23,7 +24,6 @@ function FormularioEdicion({ }) {
 
   useEffect(() => {
     obtenerProductoPorId(id).then(() => {
-      //setProducto(productoEncontrado)
       setCargando(false);
     }).catch((error) => {
       if (error == "Producto no encontrado") {
@@ -86,50 +86,56 @@ function FormularioEdicion({ }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Editar Producto</h2>
-      <div>
-        <label>Nombre:</label>
-        <input
-          type="text"
-          name="nombre"
-          value={producto.nombre || ''}
-          onChange={handleChange}
-          required
-        />
-      </div>
-      <div>
-        <label>URL de la Imagen</label>
-        <input
-          type="text"
-          name="imagen"
-          value={producto.imagen}
-          onChange={handleChange}
-          required />
-      </div>
-      <div>
-        <label>Precio:</label>
-        <input
-          type="number"
-          name="precio"
-          value={producto.precio || ''}
-          onChange={handleChange}
-          required
-          min="0"
-        />
-      </div>
-      <div>
-        <label>Descripción:</label>
-        <textarea
-          name="descripcion"
-          value={producto.descripcion || ''}
-          onChange={handleChange}
-          required
-        />
-      </div>
-      <button type="submit">Actualizar Producto</button>
-      <ToastContainer />
-    </form>
+    <div className='d-flex flex-column  justify-content-center  align-items-center min-vh-50'>
+      <form onSubmit={handleSubmit} className="p-4 border rounded shadow">
+        <h3>Editar Producto</h3>
+        <div>
+          <label className="form-label">Nombre:</label>
+          <input
+            className="form-control"
+            type="text"
+            name="nombre"
+            value={producto.nombre || ''}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div>
+          <label className="form-label">URL de la Imagen</label>
+          <input
+            className="form-control"
+            type="text"
+            name="imagen"
+            value={producto.imagen}
+            onChange={handleChange}
+            required />
+        </div>
+        <div>
+          <label className="form-label">Precio:</label>
+          <input
+            className="form-control"
+            type="number"
+            name="precio"
+            value={producto.precio || ''}
+            onChange={handleChange}
+            required
+            min="0"
+          />
+        </div>
+        <div>
+          <label>Descripción:</label>
+          <textarea
+            name="descripcion"
+            value={producto.descripcion || ''}
+            onChange={handleChange}
+            required
+            className="form-control"
+          />
+        </div>
+        <BotonEstilo text="Actualizar Producto" type="submit"></BotonEstilo>
+        <ToastContainer />
+      </form>
+    </div>
   );
 }
 

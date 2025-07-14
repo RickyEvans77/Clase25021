@@ -29,7 +29,7 @@ function NavBoostrap() {
                 <Badge bg="light" text="danger">{productosCarrito.length}</Badge>
               )}
             </Nav.Link>
-            <Nav.Link as={Link} to="/login">Login</Nav.Link>
+            <Nav.Link as={Link} to="/login">Login/Registrarse</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

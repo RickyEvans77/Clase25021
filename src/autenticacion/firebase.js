@@ -1,5 +1,4 @@
 import { initializeApp } from "firebase/app";
-//import { getAnalytics } from "firebase/analytics";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 
 const firebaseConfig = {
@@ -12,29 +11,24 @@ const firebaseConfig = {
     measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
-//const analytics = getAnalytics(app);
 const auth = getAuth();
 
 export function crearUsuario(email, password) {
     return (
         new Promise((rech, resu) => {
             createUserWithEmailAndPassword(auth, email, password)
-                .then((userCredential) => {
-                    // Signed up 
+                .then((userCredential) => { 
                     console.log("Credenciales", userCredential);
                     const user = userCredential.user;
                     console.log(user);
                     resu(user)
-                    // ...
                 })
                 .catch((error) => {
                     console.log(error.code, error.message);
                     const errorCode = error.code;
                     const errorMessage = error.message;
                     rech(error)
-                    // ..
                 });
         }))
 }

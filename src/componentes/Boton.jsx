@@ -10,10 +10,10 @@ const Boton = styled.button`
   font-size: 16px;
   font-weight: bold;
   text-transform: uppercase;
-  letter-spacing: 1px; 
-  &:hover {
-    background-color:rgb(255, 0, 0);
-  }
+  letter-spacing: 1px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  &:hover {background-color:rgb(255, 0, 0)}
   `;
 
 function BotonEstilo({text, onClick}) {

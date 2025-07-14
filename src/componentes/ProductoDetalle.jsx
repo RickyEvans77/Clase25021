@@ -17,7 +17,6 @@ export default function ProductoDetalle({}) {
     const {productoEncontrado, obtenerProductoPorId, eliminarProducto} = useProductosContext();
 
     const { id } = useParams();
-    //const [producto, setProducto] = useState(null);
     const [cantidad, setCantidad] = useState(1);
     const [cargando, setCargando] = useState(true);
     const [error, setError] = useState(null);

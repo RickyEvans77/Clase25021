@@ -1,4 +1,5 @@
 import React, { createContext, useState, useContext } from 'react';
+import { toast } from 'react-toastify';
 
 const ProductosContext = createContext();
 export function ProductosProvider({ children }) {
@@ -59,7 +60,6 @@ export function ProductosProvider({ children }) {
                         },
                         body: JSON.stringify(producto),
                     });
-
                     if (!respuesta.ok) {
                         throw new Error('Error al agregar el producto.');
                     }
@@ -109,12 +109,14 @@ export function ProductosProvider({ children }) {
                         const respuesta = await fetch(`https://6834476e464b499636020d00.mockapi.io/productos/${id}`, {
                         method: 'DELETE',
                         });
-                        if (!respuesta.ok) throw new Error('Error al eliminar');
-                        alert('Producto eliminado correctamente.');
+                        if (!respuesta.ok){
+                            throw new Error('Error al eliminar');
+                        }
+                        toast.success('Producto eliminado correctamente.');
                         resu();
                     } catch (error) {
                         console.error(error.message);
-                        alert('Hubo un problema al eliminar el producto.');
+                        toast.error('Hubo un problema al eliminar el producto.');
                         rech(error);
                     }
                 })

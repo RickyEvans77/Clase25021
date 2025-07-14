@@ -23,7 +23,7 @@ export default function Admin() {
     return (
         <>
             <div>
-                <h3>Componente Administrador</h3>
+                <h2>Componente Administrador</h2>
             </div>
             <div>
                 <BotonEstilo text= "Agregar producto" onClick={handleAgregarProducto}></BotonEstilo>

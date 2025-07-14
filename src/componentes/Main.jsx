@@ -8,7 +8,7 @@ function MainBootstrap() {
         <Col xs={12} md={4} lg={4}>
           <Image
             src="/Gemini_Generated_Image_unh28nunh28nunh2.png"
-            alt="/Gemini_Generated_Image_unh28nunh28nunh2.png"
+            alt=""
             fluid
             rounded
           />

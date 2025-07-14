@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-//import { Link, useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../contexts/AuthContext';
 import { crearUsuario, loginEmailPass } from '../autenticacion/firebase';
 import { dispararSweetBasico } from '../assets/SweetAlert';
@@ -33,7 +32,7 @@ function Login() {
                 dispararSweetBasico("Inicio exitoso", "", "success", "Confirmar")
             })
             .catch((error) => {
-                console.log("Error de login:", error); // <-- Agrega este log
+                console.log("Error de login:", error);
                 dispararSweetBasico("Error", "Verifique email o contraseña", "error", "Cerrar")
             })
     }
@@ -46,7 +45,7 @@ function Login() {
     if (usuarioLogeado || admin) {
         return (
             <div className="d-flex flex-column justify-content-center align-items-center">
-                <button type="button" className="btn btn-danger w-50" onClick={logout}>
+                <button style={{ marginTop: "20px" ,marginBottom: "20px" }} type="button" className="btn btn-danger w-25" onClick={logout}>
                     Cerrar sesión
                 </button>
             </div>
