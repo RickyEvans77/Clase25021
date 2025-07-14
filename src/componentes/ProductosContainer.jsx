@@ -2,7 +2,6 @@ import { useEffect, useState } from "react"
 import "../styles/Productos.css"
 import Card from "./Card"
 import { useProductosContext } from "../contexts/ProductosContext";
-import { HelmetProvider } from "react-helmet-async";
 
 export default function ProductosContainer({ }) {
     const { productos, obtenerProductos, filtrarProductos } = useProductosContext();
@@ -50,10 +49,6 @@ export default function ProductosContainer({ }) {
                         onChange={(e) => setFiltro(e.target.value)}/>
                 </div>
                 <div className="producto-container">
-                    <HelmetProvider>
-                        <title>Productos | Mi Tienda</title>
-                        <meta name="description" content="Explora nuestra variedad de productos." />
-                    </HelmetProvider>
                     {productosActuales.map((producto) => (
                         <Card
                             key={producto.id}
